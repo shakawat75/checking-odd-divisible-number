@@ -52,7 +52,7 @@ that:
           16-1 = 15 ---> 01111       10000 & 01111 = 00000
           32-1 = 31 ---> 011111      100000 & 011111 = 000000
           
-         Got that?? Yeah, great you are intelligent enough to understand this thing.
+         Got that?? Yeah, great you are intelligent enough to grab this.
          
          Now let me point out the things related to this logic:
          1) If a number n is not divisible by any odd number then the number can be expressed in the power form of 2.
