@@ -1,0 +1,62 @@
+This question came to mind while I was solving a problem in codeforces. The problem was all about to take an input from the user. And after that, it will find out whether the 
+number is divisible by odd number or not. This problem seems very easy in the first look. You can definately think of using loop to solve this type of problem. But that won't 
+be a good idea for a input of a large number. Just consider a number 489976. If you are going to check whether this number contain odd divisible or not, you have to itereate your
+loop for 489976 times in the worst case. So, should you do that??? So, I have discovered some of the solution to this problem. And in the maximum solution in written in C++, I had
+find out something like that to check the logic.
+
+                                         puts((n&n-1)?"Yes":"No");
+                          
+This particular portion n&n-1 seems very critical to me. But somehow I found the logic behind that. Let me explain you something first. To check whether a number has odd divisor or not
+first we have to find out the prime factors of that number. Why I'm talking about the prime factors?? I think you know that all the prime numbers are odd numbers except 2.
+2 is the only even prime number. So, if I express a number in the multiplication of prime numbers(or factors), if I notice it contains any divisor which is not similar to 2 we can
+say that the given number is divisible by odd numbers.
+
+Example;
+
+      120 = 2*2*2*3*5
+      
+  Here, I have expressed the number 120 in the prime factors. So, you can see that the number is containing prime numbers other than 2.That's why we can easily say that the number
+  has odd divisor. Also note that, 2 is the only even prime number, all the prime numbers instead of 2 are odd numbers.
+  
+  For the same reason, 64 is not divisible by any odd numbers.
+  
+      64 = 2*2*2*2*2*2
+      
+ From the above observation, we can conclude that, the number which can be expressed in the power form 2 is not divisible by odd numbers. So, if a number n which can be expressed
+ as 2^(any value) then the number does not contain any odd numbers.
+ 
+ Now, I think you are clear about the matter that a number which can be expressed in the power form of 2, then the number has no odd divisor. So, isn't it enough to check whether
+ a number can be expressed in power of 2 or not just to determine whether the number is divisible by odd numbers or not???
+ 
+ Now, come back to the program logic n&n-1. Here, & is indicating the AND operation between the number n(which is our input for that particular program) and n-1(previous number
+ of n). But that AND operation will occur between the binary form of n and n-1. That means, n will be converted to binary by the machine too n-1. Then, the program will
+ accomplish the AND operation between them. If this operation results in true(1) then the program will print "yes" otherwise the operation will result in false(0) which will 
+ eventually print "No".
+ 
+ Note: We have already told that if a number n cannot be expressed in the power of 2 then the number has odd divisor. Again, if the AND operation between the binary form of
+ n and n-1 results in 1 then the number has odd divisor. Seems tricky, right?? So, there might be any relation between the checking the number in the form of power of 2 and 
+ the previously told AND opeation between n and n-1.
+
+Suppose, number n has no odd divisor. So, if you noticed my previous point you can easily say that this number can be expressed in the power of 2. Now, just have a look at 
+that:
+          2--->10
+          4--->100
+          8--->1000
+          16--->10000
+          32--->100000
+          
+       Now look at this:
+          2-1 = 1 ---> 1             10 & 1 = 00
+          4-1 = 3 ---> 011           100 & 011 = 000
+          8-1 = 7 ---> 0111          1000 & 0111 = 0000
+          16-1 = 15 ---> 01111       10000 & 01111 = 00000
+          32-1 = 31 ---> 011111      100000 & 011111 = 000000
+          
+         Got that?? Yeah, great you are intelligent enough to understand this thing.
+         
+         Now let me point out the things related to this logic:
+         1) If a number n is not divisible by any odd number then the number can be expressed in the power form of 2.
+         2) If the number n can be expressed in the power form of 2 , then the AND operation between n and n-1 always results in 0.
+          That means, n&n-1 = 0; here n = 2^p; p is any positive integer.
+          
+          Basically, the second logic is used in this program to solve this particular problem.
